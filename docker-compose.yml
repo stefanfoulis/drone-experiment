@@ -1,0 +1,14 @@
+version: "2"
+services:
+    drone:
+        image: drone/drone:0.4
+        volumes:
+            - "./data/var/lib/drone:/var/lib/drone"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        env_file:
+            - "dronerc"
+        restart: always
+        expose:
+            - "8000"
+        environment:
+            VIRTUAL_HOST: drone.local.aldryn.net
